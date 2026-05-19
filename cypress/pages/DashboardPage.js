@@ -10,11 +10,9 @@ class DashboardPage {
 
     checkDashboardPage() {
 
-        cy.location('pathname')
-            .should('equal', '/web/index.php/dashboard/index')
+        cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
 
-        cy.get(this.selectorList().dashboardGrid)
-            .should('be.visible')
+        cy.get(this.selectorList().dashboardGrid).should('be.visible')
 
     }
 
