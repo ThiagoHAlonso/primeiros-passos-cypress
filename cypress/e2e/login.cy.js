@@ -1,16 +1,16 @@
 import userData from '../fixtures/users/userData.json'
 import LoginPage from '../pages/loginPage'
 import DashboardPage from '../pages/DashboardPage'
+import MenuPage from '../pages/menuPage'
 
 const loginPage = new LoginPage()
-
 const dashboardPage = new DashboardPage()
+const menuPage = new MenuPage()
 
 describe('Orange HRM Tests', () => {
 
   const selectorList = {
   
-    dashboardGrid: ".orangehrm-dashboard-grid",
     myInfoButton:'[href="/web/index.php/pim/viewMyDetails"]',
     fistNameField: "[name='firstName']",
     midNameField:"[name='middleName']",
@@ -34,10 +34,11 @@ describe('Orange HRM Tests', () => {
     loginPage.loginWithAnyUser(userData.userSuccess.username, userData.userSuccess.password)
 
     dashboardPage.checkDashboardPage()
+
+    menuPage.acessMyInfo()
   
 
-    cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
-    cy.get(selectorList.myInfoButton).click()
+    //cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
     cy.visit('/pim/viewPersonalDetails/empNumber/7')
     cy.get(selectorList.fistNameField).clear().type('FirstNameTest')
     cy.get(selectorList.midNameField).clear().type('MidNameTest')
