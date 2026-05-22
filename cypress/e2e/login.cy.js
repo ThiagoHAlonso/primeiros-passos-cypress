@@ -2,31 +2,19 @@ import userData from '../fixtures/users/userData.json'
 import LoginPage from '../pages/loginPage'
 import DashboardPage from '../pages/DashboardPage'
 import MenuPage from '../pages/menuPage'
+import MyInfoPage from '../pages/myInfoPage'
 
 const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
 const menuPage = new MenuPage()
+const myInfoPage = new MyInfoPage()
 
 describe('Orange HRM Tests', () => {
 
   const selectorList = {
   
-    myInfoButton:'[href="/web/index.php/pim/viewMyDetails"]',
-    fistNameField: "[name='firstName']",
-    midNameField:"[name='middleName']",
-    lastNameField: "[name='lastName']",
-    genericField:".oxd-input--active",
-    dateField:"[placeholder='yyyy-dd-mm']",
-    calendarFieldButton:':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-date-wrapper > .oxd-date-input > .oxd-input',
-    dateCloseButton:".--close",
-    submitButton:"[type='submit']",
-    nationalitiesBarButton:':nth-child(5) > :nth-child(1) > :nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text',
-    nationalityButton: ":nth-child(167)",
-    MaritialStatsButton: ":nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text > .oxd-select-text--after > .oxd-icon",
-    statsRelationShipSelector:".oxd-select-dropdown > :nth-child(3)",
-    dateBirthField: "nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-date-wrapper > .oxd-date-input > .oxd-input",
-    genderRadioBoxButton: ":nth-child(1) > :nth-child(2) > .oxd-radio-wrapper > label > .oxd-radio-input",
-    savedButton: ":nth-child(1) > .oxd-form > .oxd-form-actions > .oxd-button",
+
+    
   }
 
   it.only('User Info Update - success', () => {
@@ -37,8 +25,6 @@ describe('Orange HRM Tests', () => {
 
     menuPage.acessMyInfo()
   
-
-    //cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
     cy.visit('/pim/viewPersonalDetails/empNumber/7')
     cy.get(selectorList.fistNameField).clear().type('FirstNameTest')
     cy.get(selectorList.midNameField).clear().type('MidNameTest')
