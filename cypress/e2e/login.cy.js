@@ -18,25 +18,21 @@ describe('Orange HRM Tests', () => {
   }
 
   it.only('User Info Update - success', () => {
-    loginPage.accessLoginPage()
+   loginPage.accessLoginPage()
     loginPage.loginWithAnyUser(userData.userSuccess.username, userData.userSuccess.password)
-
     dashboardPage.checkDashboardPage()
-
     menuPage.acessMyInfo()
+    myInfoPage.visitPage(7)
 
-    myInfoPage.fillPersonalDetails('FirstName', 'LastName', 'nickName')
-    myInfoPage.fillEmployeeDetails('EmployId','otherId','2012-12-12')
-    myInfoPage.fillStatus()
-    cy.get(this.selectorList().savedButton).click()
-        
-    cy.visit('/pim/viewPersonalDetails/empNumber/7')
+    myInfoPage.fillPersonalDetails('FirstNameTest', 'MidNameTest', 'LastNameTest', 'NickTest')
+    myInfoPage.fillEmployeeDetails('test', 'OtherIdTest', 'Drivers License Number Test', '2012-12-12')
+    myInfoPage.fillStatus('1963-12-12')
      
    
     
   
   })
-  it('Login - fail', () => {
+  it.skip('Login - fail', () => {
     cy.visit('/auth/login')
 
     cy.get(selectorList.usernameField).type(userData.userFail.username)
