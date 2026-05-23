@@ -1,7 +1,7 @@
 class MyInfoPage{
 
     selectorList(){
-        const selector = {
+        const selectors = {
             fistNameField: "[name='firstName']",
             midNameField:"[name='middleName']",
             lastNameField: "[name='lastName']",
@@ -23,7 +23,26 @@ class MyInfoPage{
         return selectors 
     }
 
-        acessMyInfoPage(){
+        fillPersonalDetails(firstName, midName, lastName, nick){
+            cy.get(this.selectorList().fistNameField).clear().type(firstName)
+            cy.get(this.selectorList().midNameField).clear().type(midName)
+            cy.get(this.selectorList().lastNameField).clear().type(lastName)
+            cy.get(this.selectorList().genericField).eq(3).clear().type(nick)
     }
+        fillEmployeeDetails(test, otherIdTest, driversLicenseDate){
+            cy.get(this.selectorList().genericField).eq(4).clear().type(test)
+            cy.get(this.selectorList().genericField).eq(5).clear().type(otherIdTest) 
+            cy.get(this.selectorList().genericField).eq(6).clear().type()
+            cy.get(this.selectorList().genericField).eq(7).clear().type(driversLicenseDate)
+            cy.get(this.selectorList().calendarFieldButton).clear().type()     
+            
+        }
+
+        fillStatus(){
+            cy.get(this.selectorList().nationalitiesBarButton).click()
+            cy.get(this.selectorList().nationalityButton).click()   
+            cy.get(this.selectorList().MaritialStatsButton).click()
+           
+        }
 }
 export default MyInfoPage

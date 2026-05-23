@@ -24,28 +24,16 @@ describe('Orange HRM Tests', () => {
     dashboardPage.checkDashboardPage()
 
     menuPage.acessMyInfo()
-  
+
+    myInfoPage.fillPersonalDetails('FirstName', 'LastName', 'nickName')
+    myInfoPage.fillEmployeeDetails('EmployId','otherId','2012-12-12')
+    myInfoPage.fillStatus()
+    cy.get(this.selectorList().savedButton).click()
+        
     cy.visit('/pim/viewPersonalDetails/empNumber/7')
-    cy.get(selectorList.fistNameField).clear().type('FirstNameTest')
-    cy.get(selectorList.midNameField).clear().type('MidNameTest')
-    cy.get(selectorList.lastNameField).clear().type('LastNameTest')
-    cy.get(selectorList.genericField).eq(3).clear().type('NickTest') 
-    cy.get(selectorList.genericField).eq(4).clear().type('test')
-    cy.get(selectorList.genericField).eq(5).clear().type('OtherIdTest') 
-    cy.get(selectorList.genericField).eq(6).clear().type('Drivers License Number Test')
+     
    
-    cy.get(selectorList.calendarFieldButton).clear().type('2012-12-12')
-   
-    cy.get(selectorList.dateCloseButton).click()
-   
-    cy.get(selectorList.nationalitiesBarButton).click()
-    cy.get(selectorList.nationalityButton).click()
     
-    cy.get(selectorList.MaritialStatsButton).click()
-    
-  
-    cy.get(selectorList.savedButton).click()
- 
   
   })
   it('Login - fail', () => {
