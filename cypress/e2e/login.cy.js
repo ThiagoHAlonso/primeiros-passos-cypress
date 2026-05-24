@@ -11,14 +11,8 @@ const myInfoPage = new MyInfoPage()
 
 describe('Orange HRM Tests', () => {
 
-  const selectorList = {
-  
-
-    
-  }
-
-  it.only('User Info Update - success', () => {
-   loginPage.accessLoginPage()
+  it ('User Info Update - success', () => {
+    loginPage.accessLoginPage()
     loginPage.loginWithAnyUser(userData.userSuccess.username, userData.userSuccess.password)
     dashboardPage.checkDashboardPage()
     menuPage.acessMyInfo()
@@ -28,17 +22,11 @@ describe('Orange HRM Tests', () => {
     myInfoPage.fillEmployeeDetails('test', 'OtherIdTest', 'Drivers License Number Test', '2012-12-12')
     myInfoPage.fillStatus('1963-12-12')
      
-   
-    
-  
   })
-  it.skip('Login - fail', () => {
-    cy.visit('/auth/login')
-
-    cy.get(selectorList.usernameField).type(userData.userFail.username)
-    cy.get(selectorList.passwordField).type(userData.userFail.password)
-    cy.get(selectorList.loginButton).click()
-    cy.get(selectorList.wrongCredentialAlert).should('be.visible').and('contain', 'Invalid credentials')
+  it ('Login - fail', () => {
+    loginPage.accessLoginPage()
+    loginPage.loginWithAnyUser(userData.userFail.username, userData.userFail.password)
+    loginPage.checkAcessInvalid()   
   })
 
 })
