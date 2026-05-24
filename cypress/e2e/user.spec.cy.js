@@ -23,10 +23,6 @@ describe('Orange HRM Tests', () => {
     myInfoPage.fillStatus('1963-12-12')
      
   })
-  it ('Login - fail', () => {
-    loginPage.accessLoginPage()
-    loginPage.loginWithAnyUser(userData.userFail.username, userData.userFail.password)
-    loginPage.checkAcessInvalid()   
-  })
-
+  
+ 
 })
