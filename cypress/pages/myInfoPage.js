@@ -47,6 +47,12 @@ class MyInfoPage {
     visitPage(empNumber = 7) {
         cy.visit(`/pim/viewPersonalDetails/empNumber/${empNumber}`)
     }
+     checkInfoSaved(firstName, midName, lastName, nick) {
+        cy.get(this.selectors.firstNameField).should('have.value', firstName)
+        cy.get(this.selectors.midNameField).should('have.value', midName)
+        cy.get(this.selectors.lastNameField).should('have.value', lastName)
+        cy.get(this.selectors.genericField).eq(3).should('have.value', nick)
+    }
 }
 
 export default MyInfoPage

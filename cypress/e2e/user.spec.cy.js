@@ -21,7 +21,7 @@ describe('Orange HRM Tests', () => {
     menuPage.acessMyInfo()
     myInfoPage.visitPage(7)
 
-    myInfoPage.fillPersonalDetails(chance.first() , chance.last(), chance.string(), chance.string(), 'NickTest')
+    myInfoPage.fillPersonalDetails(chance.first() , chance.last(), chance.string(), chance.string(),)
     myInfoPage.fillEmployeeDetails('test', 'OtherIdTest', 'Drivers License Number Test', '2012-12-12')
     myInfoPage.fillStatus('1963-12-12')
      
